@@ -1,3 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <plugin id="com.antennahouse.dita.ah-css-pdf">
+	<feature extension="dita.xsl.xhtml" value="xsl/xslhtml/dita2htmlImpl.xsl" 
+		type="file"/>
 </plugin>
