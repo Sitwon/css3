@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <project name="dita2ah-css-pdf" default="dita2ah-css-pdf">
 
-	<target name="dita2-css-pdf">
+	<target name="dita2ah-css-pdf"
+		depends="build-init, preprocess, dita.map.xhtml, copy-revflag, copy-css , dita.topics.xhtml, dita.inner.topics.xhtml, dita.outer.topics.xhtml">
 	</target>
 
 </project>
