@@ -12,7 +12,7 @@
 	</target>
 	
 	<target name="copy-ah-css">
-		<copy name="${ah-css-pdf.dir}${file.separator}css" todir="${output.dir}" overwrite="true"/>
+		<copy file="${ah-css-pdf.dir}${file.separator}css" todir="${output.dir}" overwrite="true"/>
 	</target>
 
 </project>
