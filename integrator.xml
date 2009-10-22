@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <project name="dita2ah-css-pdf" default="dita2ah-css-pdf">
 
-  <condition property="ah-css-pdf.dir" value="plugin|ah-css-pdf">
+  <condition property="ah-css-pdf.dir" value="plugins${file.separator}ah-css-pdf">
     <not>
       <isset property="ah-css-pdf.dir"/>
     </not>
