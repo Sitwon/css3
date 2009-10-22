@@ -2,4 +2,6 @@
 <plugin id="com.antennahouse.dita.ah-css-pdf">
 	<feature extension="dita.xsl.xhtml" value="xsl/xslhtml/dita2htmlImpl.xsl" 
 		type="file"/>
+    <feature extension="dita.conductor.transtype.check" value="ah-css-pdf" type="value"/>
+    <feature extension="dita.conductor.target" value="integrator.xml" type="file"/>
 </plugin>
