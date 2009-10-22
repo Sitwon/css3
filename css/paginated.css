@@ -1,0 +1,20 @@
+﻿
+
+@page {
+  size: Letter;
+  margin: 1in;
+  
+  @top-center {   /* Running header */
+    font: 8pt sans-serif;
+    content: string(title);
+  }
+  
+  @bottom-center {
+  font: 8pt sans-serif;
+  content: "page " counter(page) " of " counter(pages);
+  }
+}
+
+title {
+ string-set: title self;
+}
