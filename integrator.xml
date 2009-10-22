@@ -1,8 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <project name="dita2ah-css-pdf" default="dita2ah-css-pdf">
 
+  <condition property="ah-css-pdf.dir" value="plugin|ah-css-pdf">
+    <not>
+      <isset property="ah-css-pdf.dir"/>
+    </not>
+  </condition>
+
 	<target name="dita2ah-css-pdf"
-		depends="build-init, preprocess, dita.map.xhtml, copy-revflag, copy-css , dita.topics.xhtml, dita.inner.topics.xhtml, dita.outer.topics.xhtml">
+		depends="build-init, preprocess, dita.map.xhtml, copy-revflag, copy-css, copy-ah-css, dita.topics.xhtml, dita.inner.topics.xhtml, dita.outer.topics.xhtml">
+	</target>
+	
+	<target name="copy-ah-css">
+		<copy name="${ah-css-pdf.dir}${file.separator}css" todir="${output.dir}" overwrite="true"/>
 	</target>
 
 </project>
