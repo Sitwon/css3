@@ -8,14 +8,25 @@
   </condition>
 
 	<target name="dita2ah-css-pdf"
-		depends="build-init, preprocess, dita.map.xhtml, copy-revflag, copy-css, copy-ah-css, dita.topics.xhtml, dita.inner.topics.xhtml, dita.outer.topics.xhtml">
+		depends="build-init, preprocess, dita.map.xhtml, copy-revflag, copy-css, 
+		dita.topics.xhtml, dita.inner.topics.xhtml, dita.outer.topics.xhtml, ah-css-pdf.copy-css, 
+		ah-css-pdf.fix-internal-links, ah-css-pdf.render-to-pdf, ah-css-pdf.clean-output-dir">
 	</target>
 	
-	<target name="copy-ah-css">
+	<target name="ah-css-pdf.copy-css">
 		<!-- Copy the plugin's stylesheets to the output directory -->
 		<copy todir="${output.dir}" overwrite="true">
 			<dirset dir="${ah-css-pdf.dir}" includes="css"/>
 		</copy>
+	</target>
+	
+	<target name="ah-css-pdf.fix-internal-links">
+	</target>
+	
+	<target name="ah-css-pdf.render-to-pdf">
+	</target>
+	
+	<target name="ah-css-pdf.clean-output-dir">
 	</target>
 
 </project>
