@@ -15,8 +15,8 @@
 	
 	<target name="ah-css-pdf.copy-css">
 		<!-- Copy the plugin's stylesheets to the output directory -->
-		<copy todir="${output.dir}" overwrite="true">
-			<dirset dir="${ah-css-pdf.dir}" includes="css"/>
+		<copy todir="${output.dir}${file.separator}css" overwrite="true">
+			<fileset dir="${ah-css-pdf.dir}${file.separator}css"/>
 		</copy>
 	</target>
 	
