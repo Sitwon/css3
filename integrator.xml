@@ -21,6 +21,7 @@
 	</target>
 	
 	<target name="ah-css-pdf.fix-internal-links">
+		<replace dir="${output.dir}" token=".html" value=".pdf" includes="**/*.html"/>
 	</target>
 	
 	<target name="ah-css-pdf.render-to-pdf">
