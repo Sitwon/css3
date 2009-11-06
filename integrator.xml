@@ -7,20 +7,6 @@
     </not>
   </condition>
 
-	<!--
-	<target name="dita2ah-css-pdf"
-		depends="build-init, preprocess">
-		<property name="ah-css-pdf.merged.file" value="${dita.temp.dir}${file.separator}${dita.map.filename.root}_MERGED.xml"/>
-		<antcall target="ah-css-pdf.topicmerge">
-			<param name="input" value="${dita.temp.dir}${file.separator}${user.input.file}"/>
-		</antcall>
-		<antcall target="ah-css-pdf.map2pdf">
-		</antcall>
-		<antcall target="ah-css-pdf.clean-output-dir">
-		</antcall>
-	</target>
-	-->
-
 	<target name="dita2ah-css-pdf"
 		depends="build-init, preprocess">
 		<property name="ah-css-pdf.merged.file" value="${dita.merged.dir}${file.separator}${dita.map.filename.root}_MERGED.xml"/>
@@ -28,6 +14,8 @@
 			<param name="input" value="${dita.temp.dir}${file.separator}${user.input.file}"/>
 		</antcall>
 		<antcall target="ah-css-pdf.map2pdf">
+		</antcall>
+		<antcall target="ah-css-pdf.clean-output-dir">
 		</antcall>
 	</target>
 
@@ -44,36 +32,6 @@
 	<target name="ah-css-pdf.map2pdf">
 		<condition property="ah-css-pdf.stylesheet"
 			value="${ah-css-pdf.dir}{file.separator}css${file.separator}paginated.css">
-			<not>
-				<isset property="ah-css-pdf.stylesheet"/>
-			</not>
-		</condition>
-		<exec executable="AHFCmd" failonerror="true">
-			<arg value="-d"/>
-			<arg value="${ah-css-pdf.merged.file}"/>
-			<arg value="-s"/>
-			<arg value="${ah-css-pdf.stylesheet}"/>
-			<arg value="-o"/>
-			<arg value="${output.dir}${file.separator}${dita.map.filename.root}.pdf"/>
-			<arg value="-x"/>
-			<arg value="4"/>
-		</exec>
-	</target>
-	
-	<target name="ah-css-pdf.copy-css">
-		<!-- Copy the plugin's stylesheets to the output directory -->
-		<copy todir="${output.dir}${file.separator}css" overwrite="true">
-			<fileset dir="${ah-css-pdf.dir}${file.separator}css"/>
-		</copy>
-	</target>
-	
-	<target name="ah-css-pdf.fix-internal-links">
-		<replace dir="${output.dir}" token=".html" value=".pdf" includes="**/*.html"/>
-	</target>
-
-	<target name="ah-css-pdf.map2pdf">
-		<condition property="ah-css-pdf.stylesheet"
-			value="${ah-css-pdf.dir}${file.separator}css${file.separator}paginated.css">
 			<not>
 				<isset property="ah-css-pdf.stylesheet"/>
 			</not>
