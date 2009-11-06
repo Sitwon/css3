@@ -42,6 +42,22 @@
 	</target>
 
 	<target name="ah-css-pdf.map2pdf">
+		<condition property="ah-css-pdf.stylesheet"
+			value="${ah-css-pdf.dir}{file.separator}css${file.separator}paginated.css">
+			<not>
+				<isset property="ah-css-pdf.stylesheet"/>
+			</not>
+		</condition>
+		<exec executable="AHFCmd" failonerror="true">
+			<arg value="-d"/>
+			<arg value="${ah-css-pdf.merged.file}"/>
+			<arg value="-s"/>
+			<arg value="${ah-css-pdf.stylesheet}"/>
+			<arg value="-o"/>
+			<arg value="${output.dir}${file.separator}${dita.map.filename.root}.pdf"/>
+			<arg value="-x"/>
+			<arg value="4"/>
+		</exec>
 	</target>
 	
 	<target name="ah-css-pdf.copy-css">
