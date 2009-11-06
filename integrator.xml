@@ -7,6 +7,7 @@
     </not>
   </condition>
 
+	<!--
 	<target name="dita2ah-css-pdf"
 		depends="build-init, preprocess">
 		<property name="ah-css-pdf.merged.file" value="${dita.temp.dir}${file.separator}${dita.map.filename.root}_MERGED.xml"/>
@@ -18,15 +19,24 @@
 		<antcall target="ah-css-pdf.clean-output-dir">
 		</antcall>
 	</target>
+	-->
+
+	<target name="dita2ah-css-pdf"
+		depends="build-init, preprocess, ah-css-pdf.topicmerge">
+	</target>
 
 	<target name="ah-css-pdf.topicmerge">
-		<dirname file="${dita.temp.dir}${file.separator}${user.input.file}"
-			property="dita.merged.dir" />
-		<xslt processor="trax" in="${input}"
-			out="${ah-css-pdf.merged.file}"
-			style="${dita.script.dir}${file.separator}topicmerge.xsl">
-		</xslt>
-		<copy todir="${output.dir}" file="${ah-css-pdf.merged.file}" overwrite="true"/>
+	</target>
+	
+	<target name="ah-css-pdf.copy-css">
+		<!-- Copy the plugin's stylesheets to the output directory -->
+		<copy todir="${output.dir}${file.separator}css" overwrite="true">
+			<fileset dir="${ah-css-pdf.dir}${file.separator}css"/>
+		</copy>
+	</target>
+	
+	<target name="ah-css-pdf.fix-internal-links">
+		<replace dir="${output.dir}" token=".html" value=".pdf" includes="**/*.html"/>
 	</target>
 
 	<target name="ah-css-pdf.map2pdf">
