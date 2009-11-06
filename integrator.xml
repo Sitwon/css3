@@ -16,7 +16,10 @@
 	-->
 
 	<target name="dita2ah-css-pdf"
-		depends="build-init, preprocess, ah-css-pdf.topicmerge">
+		depends="build-init, preprocess">
+		<antcall target="ah-css-pdf.topicmerge">
+			<param name="input" value="${dita.temp.dir}${file.separator}${user.input.file}"/>
+		</antcall>
 	</target>
 
 	<target name="ah-css-pdf.topicmerge">
