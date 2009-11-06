@@ -36,6 +36,9 @@
 				<isset property="ah-css-pdf.stylesheet"/>
 			</not>
 		</condition>
+		<!-- Temporary kludge to work around a bug in Formatter. -->
+		<replace file="${ah-css-pdf.merged.file}" token="&amp;lt;?path2project?&amp;gt;">
+		</replace>
 		<exec executable="AHFCmd" failonerror="true">
 			<arg value="-d"/>
 			<arg value="${ah-css-pdf.merged.file}"/>
