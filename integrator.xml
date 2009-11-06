@@ -9,7 +9,7 @@
 
 	<target name="dita2ah-css-pdf"
 		depends="build-init, preprocess">
-		<property name="ah-css-pdf.merged.file" value="${dita.merged.dir}${file.separator}${dita.map.filename.root}_MERGED.xml"/>
+		<property name="ah-css-pdf.merged.file" value="${dita.temp.dir}${file.separator}${dita.map.filename.root}_MERGED.xml"/>
 		<antcall target="ah-css-pdf.topicmerge">
 			<param name="input" value="${dita.temp.dir}${file.separator}${user.input.file}"/>
 		</antcall>
@@ -31,7 +31,7 @@
 
 	<target name="ah-css-pdf.map2pdf">
 		<condition property="ah-css-pdf.stylesheet"
-			value="${ah-css-pdf.dir}{file.separator}css${file.separator}paginated.css">
+			value="${ah-css-pdf.dir}${file.separator}css${file.separator}paginated.css">
 			<not>
 				<isset property="ah-css-pdf.stylesheet"/>
 			</not>
