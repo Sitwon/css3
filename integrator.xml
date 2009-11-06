@@ -31,10 +31,12 @@
 	<target name="ah-css-pdf.topicmerge">
 		<dirname file="${dita.temp.dir}${file.separator}${user.input.file}"
 			property="dita.merged.dir" />
+		<property name="merged.file" value="${dita.merged.dir}${file.separator}${dita.map.filename.root}_MERGED.xml"/>
 		<xslt processor="trax" in="${input}"
-			out="${dita.merged.dir}${file.separator}${dita.map.filename.root}_MERGED.xml"
+			out="${merged.file}"
 			style="${dita.script.dir}${file.separator}topicmerge.xsl">
 		</xslt>
+		<copy todir="${output.dir}" file="${merged.file}" overwrite="true"/>
 	</target>
 	
 	<target name="ah-css-pdf.copy-css">
