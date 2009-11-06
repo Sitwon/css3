@@ -21,6 +21,8 @@
 		<antcall target="ah-css-pdf.topicmerge">
 			<param name="input" value="${dita.temp.dir}${file.separator}${user.input.file}"/>
 		</antcall>
+		<antcall target="ah-css-pdf.map2pdf">
+		</antcall>
 	</target>
 
 	<target name="ah-css-pdf.topicmerge">
@@ -31,6 +33,9 @@
 			style="${dita.script.dir}${file.separator}topicmerge.xsl">
 		</xslt>
 		<copy todir="${output.dir}" file="${ah-css-pdf.merged.file}" overwrite="true"/>
+	</target>
+
+	<target name="ah-css-pdf.map2pdf">
 	</target>
 	
 	<target name="ah-css-pdf.copy-css">
