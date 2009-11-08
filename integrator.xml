@@ -1,49 +1,49 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<project name="dita2ah-css-pdf" default="dita2ah-css-pdf">
+<project name="dita2css3" default="dita2css3">
 
-  <condition property="ah-css-pdf.dir" value="plugins${file.separator}ah-css-pdf">
+  <condition property="css3.dir" value="plugins${file.separator}css3">
     <not>
-      <isset property="ah-css-pdf.dir"/>
+      <isset property="css3.dir"/>
     </not>
   </condition>
 
-	<target name="dita2ah-css-pdf"
+	<target name="dita2css3"
 		depends="build-init, preprocess">
-		<property name="ah-css-pdf.merged.file" value="${dita.temp.dir}${file.separator}${dita.map.filename.root}_MERGED.xml"/>
-		<antcall target="ah-css-pdf.topicmerge">
+		<property name="css3.merged.file" value="${dita.temp.dir}${file.separator}${dita.map.filename.root}_MERGED.xml"/>
+		<antcall target="css3.topicmerge">
 			<param name="input" value="${dita.temp.dir}${file.separator}${user.input.file}"/>
 		</antcall>
-		<antcall target="ah-css-pdf.map2pdf">
+		<antcall target="css3.map2pdf">
 		</antcall>
-		<antcall target="ah-css-pdf.clean-output-dir">
+		<antcall target="css3.clean-output-dir">
 		</antcall>
 	</target>
 
-	<target name="ah-css-pdf.topicmerge">
+	<target name="css3.topicmerge">
 		<dirname file="${dita.temp.dir}${file.separator}${user.input.file}"
 			property="dita.merged.dir" />
 		<xslt processor="trax" in="${input}"
-			out="${ah-css-pdf.merged.file}"
+			out="${css3.merged.file}"
 			style="${dita.script.dir}${file.separator}topicmerge.xsl">
 		</xslt>
-		<copy todir="${output.dir}" file="${ah-css-pdf.merged.file}" overwrite="true"/>
+		<copy todir="${output.dir}" file="${css3.merged.file}" overwrite="true"/>
 	</target>
 
-	<target name="ah-css-pdf.map2pdf">
-		<condition property="ah-css-pdf.stylesheet"
-			value="${ah-css-pdf.dir}${file.separator}css${file.separator}paginated.css">
+	<target name="css3.map2pdf">
+		<condition property="css3.stylesheet"
+			value="${css3.dir}${file.separator}css${file.separator}paginated.css">
 			<not>
-				<isset property="ah-css-pdf.stylesheet"/>
+				<isset property="css3.stylesheet"/>
 			</not>
 		</condition>
 		<!-- Temporary kludge to work around a bug in Formatter. -->
-		<replace file="${ah-css-pdf.merged.file}" token="&amp;lt;?path2project?&amp;gt;">
+		<replace file="${css3.merged.file}" token="&amp;lt;?path2project?&amp;gt;">
 		</replace>
 		<exec executable="AHFCmd" failonerror="true">
 			<arg value="-d"/>
-			<arg value="${ah-css-pdf.merged.file}"/>
+			<arg value="${css3.merged.file}"/>
 			<arg value="-s"/>
-			<arg value="${ah-css-pdf.stylesheet}"/>
+			<arg value="${css3.stylesheet}"/>
 			<arg value="-o"/>
 			<arg value="${output.dir}${file.separator}${dita.map.filename.root}.pdf"/>
 			<arg value="-x"/>
@@ -51,7 +51,7 @@
 		</exec>
 	</target>
 	
-	<target name="ah-css-pdf.clean-output-dir">
+	<target name="css3.clean-output-dir">
 		<delete includeemptydirs="true">
 			<fileset dir="${output.dir}">
 				<exclude name="**/*.pdf"/>
