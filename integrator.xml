@@ -8,7 +8,7 @@
   </condition>
 
 	<target name="dita2css3"
-		  depends="build-init, preprocess" remove=", css3.xhtml-split, css3.topicmerge, css3.xhtml-single, css3.pdf">
+		  depends="build-init, preprocess">
 		<property name="css3.merged.file" value="${dita.temp.dir}${file.separator}${dita.map.filename.root}_MERGED.xml"/>
 		<antcall target="css3.xhtml-split">
 		</antcall>
