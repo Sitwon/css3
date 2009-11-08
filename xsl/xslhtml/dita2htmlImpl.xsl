@@ -55,7 +55,7 @@
     </xsl:if>
     
 	<!-- This is the line I added. That's it. -->
-	<xsl:if test="$TRANSTYPE='ah-css-pdf'">
+	<xsl:if test="$TRANSTYPE='css3'">
 		<link rel="stylesheet" type="text/css" href="../css/paginated.css"/>
 	</xsl:if>
 	
