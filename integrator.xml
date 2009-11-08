@@ -6,13 +6,21 @@
       <isset property="css3.dir"/>
     </not>
   </condition>
+  <property name="css3.merged.file" value="${dita.temp.dir}${file.separator}${dita.map.filename.root}_MERGED.xml"/>
 
 	<target name="dita2css3"
-		depends="build-init, preprocess">
-		<property name="css3.merged.file" value="${dita.temp.dir}${file.separator}${dita.map.filename.root}_MERGED.xml"/>
-		<antcall target="css3.topicmerge">
-			<param name="input" value="${dita.temp.dir}${file.separator}${user.input.file}"/>
-		</antcall>
+		depends="build-init, preprocess, css3.xhtml-split, css3.topicmerge, css3.xhtml-single, css3.pdf">
+	</target>
+
+	<target name="css3.xhtml-split"
+		depends="dita.map.xhtml, copy-revflag, copy-css, dita.topics.xhtml, dita.inner.topics.xhtml, dita.outer.topics.xhtml">
+	</target>
+
+	<target name="css3.xhtml-single"
+		depends="dita.map.xhtml, copy-revflag, copy-css, dita.topics.xhtml, dita.inner.topics.xhtml, dita.outer.topics.xhtml">
+	</target>
+
+	<target name="css3.pdf">
 		<antcall target="css3.map2pdf">
 		</antcall>
 		<antcall target="css3.clean-output-dir">
@@ -20,6 +28,7 @@
 	</target>
 
 	<target name="css3.topicmerge">
+		<property name="input" value="${dita.temp.dir}${file.separator}${user.input.file}"/>
 		<dirname file="${dita.temp.dir}${file.separator}${user.input.file}"
 			property="dita.merged.dir" />
 		<xslt processor="trax" in="${input}"
