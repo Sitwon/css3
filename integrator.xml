@@ -43,7 +43,6 @@
 			  out="${css3.merged.file}"
 			  style="${dita.script.dir}${file.separator}topicmerge.xsl">
 		</xslt>
-		<copy todir="${output.dir}" file="${css3.merged.file}" overwrite="true"/>
 	</target>
 
 	<target name="css3.map2pdf">
