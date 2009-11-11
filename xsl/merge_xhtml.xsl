@@ -9,7 +9,16 @@
 	<xsl:template match="/html">
 		<html>
 			<xsl:copy-of select="head"/>
+			<body>
+				<xsl:copy-of select="body/*"/>
+				<xsl:apply-templates select="body/*"/>
+			</body>
 		</html>
+	</xsl:template>
+
+	<xsl:template match="a[@href][not(@href='')]">
+		<br/>
+		<xsl:value-of select="@href"/>
 	</xsl:template>
 
 </xsl:stylesheet>
