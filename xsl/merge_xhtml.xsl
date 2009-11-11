@@ -21,6 +21,12 @@
 
 	<xsl:template match="a[@href][not(@href='')]">
 		<p>
+			<a>
+				<xsl:attribute name="name">
+					<xsl:text>#</xsl:text>
+					<xsl:value-of select="@href"/>
+				</xsl:attribute>
+			</a>
 			<xsl:copy-of select="document(@href, /html)/html/body/*"/>
 		</p>
 	</xsl:template>
