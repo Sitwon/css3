@@ -1,7 +1,6 @@
 ﻿
-
 @page {
-  size: Letter;
+  size: A4;
   margin: 1in;
   
   @top-center {   /* Running header */
@@ -15,6 +14,268 @@
   }
 }
 
-title {
- string-set: title self;
+/*@page FrontMatter {
+  
+  @top-left {
+  vertical-align: bottom;
+  font: 18pt sans-serif;
+  font-weight: bold;
+  content: string(title);
+  border-bottom: 2pt solid black
+  }
+  @top-center { content: none }
+}*/
+
+
+/*root style */
+bookmap {
+	font-family: arial;
+	counter-reset: Chapter;
+}
+
+
+booktitle {
+
+	font-size:22pt;
+	margin-top:80mm;
+	display:block;
+	text-align:center;
+	}
+
+booklibrary {
+	line-height:140%;
+	display:block;
+ font-weight:bold;
+ font-size:22pt;
+ }
+
+mainbooktitle {
+	line-height:140%;
+	display:block;
+ font-weight:bold;
+ font-size:22pt;
+}
+
+booktitlealt {
+	display:block;
+ font-weight:bold;
+ font-size:18pt;
+
+}
+
+bookmeta {
+	display:block;
+    page-break-after:odd-page;
+}
+
+author {
+	display: none;
+}
+
+bookmeta > author {
+	float:bottom;
+	font-size:11pt;
+	text-align:center;
+	font-weight:bold;
+	display:block;
+	}
+
+bookmeta > bookid, bookmeta > isbn, bookmeta > booknumber, bookmeta > maintainer, bookmeta > organization, bookmeta > bookrights, bookmeta > copyrfirst, bookmeta > copyrlast, related-links , metadata     {
+display:none;
+}	
+
+concept {
+display:block;
+break-after:odd-page;
+}
+
+topic {
+display:block;
+break-after:odd-page;
+}
+
+@page FrontMatter {
+@top-center { content: none }
+}
+frontmatter {
+  page: FrontMatter;
+}
+
+frontmatter > concept {
+	display:block;
+
+}	 
+
+frontmatter > topic {
+display:block;
+
+}
+
+conbody, body {
+	display: block;
+	margin-left:.2in;
+}
+
+
+concept > title, topic > title {
+	display: block;
+	font-weight: bold;
+	font-size: 18pt;
+	border-bottom: 2pt solid black;
+	width: 100%;
+	margin-bottom: .6em;
+	
+}
+
+concept > title, topic > title {
+	display: block;
+	font-weight: bold;
+	font-size: 18pt;
+	border-bottom: 2pt solid black;
+	width: 100%;
+	margin-bottom: .6em;
+	
+}
+
+concept > concept > title, concept > topic > title, topic> concept > title, topic > topic > title  {
+	display: block;
+	font-weight: bold;
+	font-size: 14pt;
+	border-bottom: 2pt solid gray;
+	width: 100%;
+	margin-bottom: .6em;
+	
+}
+
+frontmatter > concept > author {
+    font-size: 0;	
+}
+
+frontmatter > topic > author {
+    font-size: 0;	
+}
+
+p, prereq {
+	
+	display: block;
+	padding-bottom:.6em;
+	text-align: justify;
+	hyphens: auto;
+
+}
+
+p:first-letter, prereq:first-letter {
+	font-size: 12pt; 
+}
+
+shortdesc {
+	margin-left: .2in;
+	display: block;
+	font-style: italic;
+
+}
+
+section {
+	display: block;
+}
+
+section > title {
+	display: block;
+	font-weight: bold;
+	font-size: 10pt;
+	padding-bottom: .6em;
+}
+
+sli {
+	margin-left:.2in;
+	display: block;
+	padding-bottom:.6em;
+}
+
+tm:after {
+  font-size: 6pt;
+  vertical-align: super;	
+	content: '®'
+}
+
+bookmap > topic:before, bookmap > concept:before {
+	display: block;
+	border-top: 2pt solid black;
+	border-bottom: 2pt solid black;
+	margin-bottom: .3in;
+	padding-top:.6em;
+	padding-bottom:.6em;
+	font-weight: bold;
+	font-size: 20pt;
+	content: "Chapter " counter(Chapter);
+}
+
+bookmap > topic, bookmap > concept {
+counter-increment: Chapter;
+}
+
+/* bookmap > topic > shortdesc:before, bookmap > concept > shortdesc:before {
+display:block;
+height: 2in;
+width: 3in;
+background-color: orange;
+float: left;
+content: "ALEX";
+} */
+
+bookmap > topic > body, bookmap > concept >conbody{
+display: block;
+margin-left: 0;
+}
+
+task > title {
+	display: block;
+	font-weight: bold;
+	font-size: 14pt;
+	border-bottom: 2pt solid gray;
+	width: 100%;
+	margin-bottom: .6em;
+	margin-top: .6em;
+	page-break-after: avoid;
+}
+
+task > shortdesc {
+	padding-bottom: .6em;
+	page-break-after: avoid;
+}
+
+steps {
+	list-style-position: outside ;
+	list-style-type:decimal-leading-zero; 
+	counter-reset: list-item ;
+	display: block;
+	margin-left: .25in;
+}
+
+steps-unordered {
+	list-style-position: outside ;
+	list-style-type:circle; 
+	counter-reset: list-item ;
+	display: block;
+	margin-left: .15in;
+}
+
+
+
+step {
+	
+	display: list-item;
+	padding-bottom: .3em;
+}
+step::marker	{ -ah-margin-end: .5em; text-indent: 0;}
+
+
+context {
+	display: block;
+	font-weight: bold;
+	margin-bottom: .6em;
+}
+
+contetxt:before {
+	content: "-->";
 }
