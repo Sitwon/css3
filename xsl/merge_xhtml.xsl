@@ -7,6 +7,9 @@
 		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"/>
 
 	<xsl:template match="/html">
+		<html>
+			<xsl:copy-of select="head"/>
+		</html>
 	</xsl:template>
 
 </xsl:stylesheet>
