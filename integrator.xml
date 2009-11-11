@@ -32,8 +32,6 @@
 	<target name="css3.pdf">
 		<antcall target="css3.map2pdf">
 		</antcall>
-		<antcall target="css3.clean-output-dir">
-		</antcall>
 	</target>
 
 	<target name="css3.topicmerge">
@@ -67,12 +65,4 @@
 		</exec>
 	</target>
 	
-	<target name="css3.clean-output-dir">
-		<delete includeemptydirs="true">
-			<fileset dir="${output.dir}">
-				<exclude name="**/*.pdf"/>
-			</fileset>
-		</delete>
-	</target>
-
 </project>
