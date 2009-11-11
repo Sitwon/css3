@@ -17,8 +17,9 @@
 	</xsl:template>
 
 	<xsl:template match="a[@href][not(@href='')]">
-		<br/>
-		<xsl:value-of select="@href"/>
+		<p>
+			<xsl:copy-of select="document(@href, /html)/html/body/*"/>
+		</p>
 	</xsl:template>
 
 </xsl:stylesheet>
