@@ -36,7 +36,11 @@
 		</antcall>
 	</target>
 
-	<target name="css3.topicmerge">
+	<target name="css3.topicmerge" depends="css.xhtml-single">
+		<replace dir="${output.dir}" includes="**/*.html">
+			<replacetoken><![CDATA[<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">]]></replacetoken>
+		</replace>
 		<xslt processor="trax" in="${output.dir}${file.separator}index.html"
 			  out="${css3.merged.file}"
 			  style="${css3.dir}${file.separator}xsl${file.separator}merge_xhtml.xsl">
