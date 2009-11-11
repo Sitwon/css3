@@ -8,7 +8,10 @@
 
 	<xsl:template match="/html">
 		<html>
-			<xsl:copy-of select="head"/>
+			<head>
+				<xsl:copy-of select="head/*"/>
+				<link rel="stylesheet" type="text/css" href="commonltr.css"/>
+			</head>
 			<body>
 				<xsl:copy-of select="body/*"/>
 				<xsl:apply-templates select="body/*"/>
