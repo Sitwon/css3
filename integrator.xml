@@ -9,11 +9,9 @@
 
 	<target name="dita2css3"
 		  depends="build-init, preprocess">
-		<property name="css3.merged.file" value="${dita.temp.dir}${file.separator}${dita.map.filename.root}_MERGED.xml"/>
-		<!-- I already know this works
+		<property name="css3.merged.file" value="${output.dir}${file.separator}index-single.html"/>
 		<antcall target="css3.xhtml-split">
 		</antcall>
-		-->
 		<antcall target="css3.topicmerge">
 			<param name="input" value="${dita.temp.dir}${file.separator}${user.input.file}"/>
 		</antcall>
@@ -39,11 +37,9 @@
 	</target>
 
 	<target name="css3.topicmerge">
-		<dirname file="${dita.temp.dir}${file.separator}${user.input.file}"
-			  property="dita.merged.dir" />
-		<xslt processor="trax" in="${input}"
+		<xslt processor="trax" in="${output.dir}${file.separator}index.html"
 			  out="${css3.merged.file}"
-			  style="${dita.script.dir}${file.separator}topicmerge.xsl">
+			  style="${css3.dir}${file.separator}xsl${file.separator}merge_xhtml.xsl">
 		</xslt>
 	</target>
 
