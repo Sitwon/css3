@@ -10,10 +10,6 @@
 	<target name="dita2css3"
 		  depends="build-init, preprocess">
 		<property name="css3.merged.file" value="${output.dir}${file.separator}index-single.html"/>
-		<antcall target="css3.xhtml-split">
-		</antcall>
-		<antcall target="css3.topicmerge">
-		</antcall>
 		<antcall target="css3.xhtml-single">
 		</antcall>
 		<!-- This is dependent on xhtml-singe
@@ -27,7 +23,7 @@
 	</target>
 
 	<target name="css3.xhtml-single"
-		  depends="dita.map.xhtml, copy-revflag, copy-css, dita.topics.xhtml, dita.inner.topics.xhtml, dita.outer.topics.xhtml">
+		  depends="css3.xhtml-split, css3.topicmerge">
 	</target>
 
 	<target name="css3.pdf">
