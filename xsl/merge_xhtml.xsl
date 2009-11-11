@@ -13,7 +13,7 @@
 				<link rel="stylesheet" type="text/css" href="commonltr.css"/>
 			</head>
 			<body>
-				<xsl:copy-of select="body/*"/>
+				<xsl:apply-templates select="body/*" mode="toc"/>
 				<xsl:apply-templates select="body/*"/>
 			</body>
 		</html>
@@ -21,8 +21,29 @@
 
 	<xsl:template match="a[@href][not(@href='')]">
 		<p>
+			<a>
+				<xsl:attribute name="name" select="lower-case(replace(.,'(.*/)*(.*).html','$2'))"/>
+			</a>
 			<xsl:copy-of select="document(@href, /html)/html/body/*"/>
 		</p>
+	</xsl:template>
+
+	<xsl:template match="a[@href][not(@href='')]" mode="toc">
+		<xsl:copy>
+			<xsl:attribute name="href">
+				<xsl:text>#</xsl:text>
+				<xsl:value-of select="lower-case(replace(@href,'(.*/)*(.*).html','$2'))"/>
+			</xsl:attribute>
+			<xsl:copy-of select="@*[not(name()='href')]"/>
+			<xsl:apply-templates/>
+		</xsl:copy>
+	</xsl:template>
+
+	<xsl:template match="node()" mode="toc">
+		<xsl:copy>
+			<xsl:copy-of select="@*"/>
+			<xsl:apply-templates mode="toc"/>
+		</xsl:copy>
 	</xsl:template>
 
 </xsl:stylesheet>
