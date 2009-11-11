@@ -13,7 +13,6 @@
 		<antcall target="css3.xhtml-split">
 		</antcall>
 		<antcall target="css3.topicmerge">
-			<param name="input" value="${dita.temp.dir}${file.separator}${user.input.file}"/>
 		</antcall>
 		<antcall target="css3.xhtml-single">
 		</antcall>
