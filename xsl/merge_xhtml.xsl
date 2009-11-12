@@ -20,7 +20,7 @@
 	</xsl:template>
 
 	<xsl:template match="a[@href][not(@href='')]">
-		<p>
+		<p class="topic">
 			<a>
 				<xsl:attribute name="name" select="lower-case(replace(@href,'.*/(.*).html','$1'))"/>
 			</a>
@@ -31,7 +31,7 @@
 	<xsl:template match="ul">
 		<div>
 			<xsl:attribute name="class">
-				<xsl:text>depth </xsl:text>
+				<xsl:text>depth</xsl:text>
 				<xsl:value-of select="count(ancestor-or-self::*[ul])"/>
 			</xsl:attribute>
 			<xsl:apply-templates/>
