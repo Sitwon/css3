@@ -28,6 +28,16 @@
 		</p>
 	</xsl:template>
 
+	<xsl:template match="ul">
+		<div>
+			<xsl:attribute name="class">
+				<xsl:text>depth </xsl:text>
+				<xsl:value-of select="count(ancestor-or-self::*[ul])"/>
+			</xsl:attribute>
+			<xsl:apply-templates/>
+		</div>
+	</xsl:template>
+
 	<xsl:template match="a[@href][not(@href='')]" mode="content">
 		<xsl:copy>
 			<xsl:attribute name="href">
