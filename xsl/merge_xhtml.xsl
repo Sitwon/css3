@@ -23,6 +23,7 @@
 		<p class="topic">
 			<a>
 				<xsl:attribute name="name" select="lower-case(replace(@href,'.*/(.*).html','$1'))"/>
+				<xsl:attribute name="id" select="lower-case(replace(@href,'.*/(.*).html','$1'))"/>
 			</a>
 			<xsl:apply-templates select="document(@href, /html)/html/body/*" mode="content"/>
 		</p>
