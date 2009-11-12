@@ -1,7 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <plugin id="com.antennahouse.dita.css3">
-	<feature extension="dita.xsl.xhtml" value="xsl/xslhtml/dita2htmlImpl.xsl" 
-		type="file"/>
     <feature extension="dita.conductor.transtype.check" value="css3" type="value"/>
     <feature extension="dita.conductor.target" value="integrator.xml" type="file"/>
 </plugin>
