@@ -12,10 +12,10 @@
 		<property name="css3.merged.file" value="${output.dir}${file.separator}index-single.html"/>
 		<antcall target="css3.xhtml-single">
 		</antcall>
-		<!-- This is dependent on xhtml-singe
 		<antcall target="css3.pdf">
 		</antcall>
-		-->
+		<antcall target="css3.xhtml-split">
+		</antcall>
 	</target>
 
 	<target name="css3.xhtml-split"
@@ -26,9 +26,7 @@
 		  depends="css3.xhtml-split, css3.topicmerge">
 	</target>
 
-	<target name="css3.pdf">
-		<antcall target="css3.map2pdf">
-		</antcall>
+	<target name="css3.pdf" depends="css3.xhtml2pdf">
 	</target>
 
 	<target name="css3.topicmerge">
@@ -42,16 +40,13 @@
 		</xslt>
 	</target>
 
-	<target name="css3.map2pdf">
+	<target name="css3.xhtml2pdf">
 		<condition property="css3.stylesheet"
 			  value="${css3.dir}${file.separator}css${file.separator}paginated.css">
 			<not>
 				<isset property="css3.stylesheet"/>
 			</not>
 		</condition>
-		<!-- Temporary kludge to work around a bug in Formatter. -->
-		<replace file="${css3.merged.file}" token="&amp;lt;?path2project?&amp;gt;">
-		</replace>
 		<exec executable="AHFCmd" failonerror="true">
 			<arg value="-d"/>
 			<arg value="${css3.merged.file}"/>
