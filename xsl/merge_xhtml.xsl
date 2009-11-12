@@ -13,7 +13,9 @@
 				<link rel="stylesheet" type="text/css" href="commonltr.css"/>
 			</head>
 			<body>
-				<xsl:apply-templates select="body/*" mode="toc"/>
+				<div class="toc">
+					<xsl:apply-templates select="body/*" mode="toc"/>
+				</div>
 				<xsl:apply-templates select="body/*"/>
 			</body>
 		</html>
