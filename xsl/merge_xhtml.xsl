@@ -55,7 +55,7 @@
 	<xsl:template match="img" mode="content">
 		<xsl:copy>
 			<xsl:attribute name="src" select="replace(@src,'[.]{2}/','')"/>
-			<xsl:copy-of select="@*"/>
+			<xsl:copy-of select="@*[not(name()='src')]"/>
 			<xsl:apply-templates mode="content"/>
 		</xsl:copy>
 	</xsl:template>
