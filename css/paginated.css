@@ -14,33 +14,79 @@
   }
 }
 
-/*@page FrontMatter {
-  
-  @top-left {
-  vertical-align: bottom;
-  font: 18pt sans-serif;
-  font-weight: bold;
-  content: string(title);
-  border-bottom: 2pt solid black
-  }
-  @top-center { content: none }
-}*/
-
 
 /*root style */
-bookmap {
+body {
 	font-family: arial;
 	counter-reset: Chapter;
 }
+.toc {
+	text-align: justify;
+}
+
+.depth1 > .topic, .depth1 > .concept {
+	page-break-after: right;
+	font-family: arial;
+	font-size: 10pt;
+	counter-increment: Chapter;
+}
+
+.toc li> a::after {
+content: leader(dotted) " " target-counter(attr(href, url), page);
+}
+
+.depth1 > .topictitle1 {
+	display: block;
+	font-weight: bold;
+	font-size: 18pt;
+	border-bottom: 2pt solid black;
+	width: 100%;
+	margin-bottom: .6em;
+	string-set: title self;
+	
+}
+
+.sectiontitle {
+	display: block;
+	font-weight: bold;
+	font-size: 14pt;
+	border-bottom: 2pt solid gray;
+	width: 100%;
+	margin-bottom: .6em;
+}
+
+.depth2 > .topic, .depth2 > .concept {
+	font-family: arial;
+	font-size: 10pt;
+}
+
+.depth2 > .topictitle1 {
+	display: block;
+	font-weight: bold;
+	font-size: 12pt;
+	border-bottom: 1pt solid black;
+	width: 100%;
+	margin-bottom: .6em;
+}
+
+.depth3 > .topictitle1 {
+	display: block;
+	font-weight: bold;
+	font-size: 10pt;
+	border-bottom: 1pt solid gray;
+	width: 100%;
+	margin-bottom: .6em;
+}
 
 
-booktitle {
+/*head > title {
 
 	font-size:22pt;
 	margin-top:80mm;
 	display:block;
 	text-align:center;
-	}
+	content: "ALEX";
+	}*/
 
 booklibrary {
 	line-height:140%;
@@ -165,7 +211,7 @@ p, prereq {
 }
 
 p:first-letter, prereq:first-letter {
-	font-size: 12pt; 
+	font-size: 14pt; 
 }
 
 shortdesc {
@@ -224,33 +270,7 @@ content: "ALEX";
 } */
 
 bookmap > topic > body, bookmap > concept >conbody{
-display: block;
-margin-left: 0;
-}
-
-task > title {
-	display: block;
-	font-weight: bold;
-	font-size: 14pt;
-	border-bottom: 2pt solid gray;
-	width: 100%;
-	margin-bottom: .6em;
-	margin-top: .6em;
-	page-break-after: avoid;
-}
-
-task > shortdesc {
-	padding-bottom: .6em;
-	page-break-after: avoid;
-}
-
-steps {
-	list-style-position: outside ;
-	list-style-type:decimal-leading-zero; 
-	counter-reset: list-item ;
-	display: block;
-	margin-left: .25in;
-}
+display: block; }
 
 steps-unordered {
 	list-style-position: outside ;
