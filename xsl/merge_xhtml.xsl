@@ -48,14 +48,22 @@
 				<xsl:value-of select="lower-case(replace(@href,'.*/(.*).html','$1'))"/>
 			</xsl:attribute>
 			<xsl:copy-of select="@*[not(name()='href')]"/>
-			<xsl:apply-templates/>
+			<xsl:apply-templates mode="content"/>
+		</xsl:copy>
+	</xsl:template>
+
+	<xsl:template match="img" mode="content">
+		<xsl:copy>
+			<xsl:attribute name="src" select="replace(@src,'[.]{2}/','')"/>
+			<xsl:copy-of select="@*"/>
+			<xsl:apply-templates mode="content"/>
 		</xsl:copy>
 	</xsl:template>
 
 	<xsl:template match="node()" mode="content">
 		<xsl:copy>
 			<xsl:copy-of select="@*"/>
-			<xsl:apply-templates mode="toc"/>
+			<xsl:apply-templates mode="content"/>
 		</xsl:copy>
 	</xsl:template>
 
