@@ -47,7 +47,17 @@
 				<isset property="css3.stylesheet"/>
 			</not>
 		</condition>
-		<exec executable="AHFCmd" failonerror="true">
+		<exec executable="${env.AHF_DIR}${file.separator}AHFCmd.exe" osfamily="windows" failonerror="true">
+			<arg value="-d"/>
+			<arg value="${css3.merged.file}"/>
+			<arg value="-s"/>
+			<arg value="${css3.stylesheet}"/>
+			<arg value="-o"/>
+			<arg value="${output.dir}${file.separator}${dita.map.filename.root}.pdf"/>
+			<arg value="-x"/>
+			<arg value="4"/>
+		</exec>
+		<exec executable="${env.AHF_DIR}${file.separator}run.sh" osfamily="unix" failonerror="true">
 			<arg value="-d"/>
 			<arg value="${css3.merged.file}"/>
 			<arg value="-s"/>
