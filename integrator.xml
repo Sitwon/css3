@@ -55,7 +55,7 @@
 			<arg value="-o"/>
 			<arg value="${output.dir}${file.separator}${dita.map.filename.root}.pdf"/>
 			<arg value="-f"/>
-			<arg value="xmlcss"/>
+			<arg value="xhtml"/>
 			<arg value="-x"/>
 			<arg value="4"/>
 		</exec>
@@ -67,7 +67,7 @@
 			<arg value="-o"/>
 			<arg value="${output.dir}${file.separator}${dita.map.filename.root}.pdf"/>
 			<arg value="-f"/>
-			<arg value="xmlcss"/>
+			<arg value="xhtml"/>
 			<arg value="-x"/>
 			<arg value="4"/>
 		</exec>
