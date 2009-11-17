@@ -9,7 +9,7 @@
 
 	<target name="dita2css3"
 		  depends="build-init, preprocess">
-		<property name="css3.merged.file" value="${output.dir}${file.separator}index-single.html"/>
+		<property name="css3.merged.file" value="${output.dir}${file.separator}index-single.xhtml"/>
 		<antcall target="css3.xhtml-single">
 		</antcall>
 		<antcall target="css3.pdf">
