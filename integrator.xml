@@ -54,8 +54,6 @@
 			<arg value="${css3.stylesheet}"/>
 			<arg value="-o"/>
 			<arg value="${output.dir}${file.separator}${dita.map.filename.root}.pdf"/>
-			<arg value="-f"/>
-			<arg value="xhtml"/>
 			<arg value="-x"/>
 			<arg value="4"/>
 		</exec>
@@ -66,8 +64,6 @@
 			<arg value="${css3.stylesheet}"/>
 			<arg value="-o"/>
 			<arg value="${output.dir}${file.separator}${dita.map.filename.root}.pdf"/>
-			<arg value="-f"/>
-			<arg value="xhtml"/>
 			<arg value="-x"/>
 			<arg value="4"/>
 		</exec>
