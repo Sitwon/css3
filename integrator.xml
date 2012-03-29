@@ -31,8 +31,8 @@
 
 	<target name="css3.topicmerge">
 		<replace dir="${output.dir}" includes="**/*.html">
-			<replacefilter token="&amp;lt;!DOCTYPE html"/>
-			<replacefilter token="  PUBLIC &amp;quot;-//W3C//DTD XHTML 1.0 Transitional//EN&amp;quot; &amp;quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&amp;quot;&amp;gt;"/>
+			<replacetoken><![CDATA[<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">]]></replacetoken>
 		</replace>
 		<xslt processor="trax" in="${output.dir}${file.separator}index.html"
 			  out="${css3.merged.file}"
