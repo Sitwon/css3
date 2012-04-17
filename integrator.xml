@@ -8,7 +8,9 @@
   </condition>
 
 	<target name="dita2css3"
-		  depends="dita2epub, css3">
+		  depends="css3">
+		<property name="user.csspath" value="${css3.dir}${file.separator}css${file.separator}paginated.css"/>
+		<antcall target="dita2epub"/>
 	</target>
 
 	<target name="css3"
