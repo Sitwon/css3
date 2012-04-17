@@ -7,9 +7,17 @@
     </not>
   </condition>
 
-	<target name="dita2css3"
-		  depends="css3">
-		<property name="user.csspath" value="${css3.dir}${file.separator}css${file.separator}paginated.css"/>
+    <target name="dita2css3" depends="dita2css3-restart, dita2css3-run" />
+
+    <target name="dita2css3-restart" unless="args.css">
+		<ant antfile="build.xml">
+			<property name="args.css" value="${css3.dir}${file.separator}css${file.separator}paginated.css"/>
+		</ant>
+	</target>
+
+	<target name="dita2css3-run"
+		  if="args.css">
+		<antcall target="css3"/>
 		<antcall target="dita2epub"/>
 	</target>
 
