@@ -12,7 +12,6 @@
     <target name="dita2css3-restart" unless="args.css">
 		<ant antfile="build.xml">
 			<property name="args.css" value="${css3.dir}${file.separator}css${file.separator}paginated.css"/>
-			<property name="args.cssroot" value="${env.DITA_HOME}"/>
 		</ant>
 	</target>
 
